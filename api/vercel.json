@@ -1,13 +1,11 @@
 {
-  "rewrites": [{ "source": "/", "destination": "/api/proxy" }],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
-      ]
+  "functions": {
+    "api/proxy.js": {
+      "maxDuration": 30
     }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/api/proxy" },
+    { "source": "/(.*)", "destination": "/api/proxy" }
   ]
 }
